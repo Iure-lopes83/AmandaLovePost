@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✨ Alexandre & Amanda ✨</title>
+    <!-- Fonte futurista e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #1f0e14, #0a0508);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            color: #fce4ec;
+        }
+
+        /* Container futurista com vidro e neon */
+        .futuristic-container {
+            max-width: 1300px;
+            width: 100%;
+            background: rgba(30, 12, 18, 0.6);
+            backdrop-filter: blur(14px) saturate(200%);
+            -webkit-backdrop-filter: blur(14px) saturate(200%);
+            border-radius: 4rem 4rem 3rem 3rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 30px 70px rgba(255, 20, 100, 0.3), 
+                        0 0 0 2px rgba(255, 80, 150, 0.25) inset,
+                        0 0 40px rgba(255, 40, 120, 0.4);
+            border: 1px solid rgba(255, 100, 180, 0.25);
+            transition: 0.3s;
+        }
+
+        /* cabeçalho com nome + coração pulsante */
+        .header-casal {
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.8rem;
+            letter-spacing: 2px;
+        }
+
+        .header-casal h1 {
+            font-weight: 700;
+            font-size: 3.8rem;
+            background: linear-gradient(135deg, #ff9acb, #ff4d94, #ff1a7a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 25px #ff3d8a, 0 0 60px #ff1a7a60;
+            letter-spacing: 3px;
+        }
+
+        .header-casal .heart-icon {
+            color: #ff4d94;
+            font-size: 3.2rem;
+            filter: drop-shadow(0 0 20px #ff3388);
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.7; }
+        }
+
+        /* Abas */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .tab-btn {
+            background: rgba(255, 60, 120, 0.12);
+            border: 1px solid rgba(255, 80, 150, 0.3);
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ffb3d1;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 15px rgba(255, 30, 100, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: 1px;
+        }
+
+        .tab-btn i {
+            font-size: 1.3rem;
+            color: #ff6fa8;
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 80, 150, 0.25);
+            border-color: #ff6fa8;
+            transform: scale(1.03);
+            box-shadow: 0 0 25px #ff338870;
+            color: #fff;
+        }
+
+        .tab-btn.active {
+            background: rgba(255, 40, 120, 0.35);
+            border-color: #ff4d94;
+            color: #fff;
+            box-shadow: 0 0 30px #ff3388, 0 0 60px #ff1a7a40;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeSlide 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(12px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== ABA FOTOS ===== */
+        .foto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        .foto-card {
+            background: rgba(255, 200, 220, 0.06);
+            border-radius: 30px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            border: 1px solid rgba(255, 100, 170, 0.2);
+            box-shadow: 0 8px 20px rgba(255, 20, 80, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(4px);
+            position: relative;
+        }
+
+        .foto-card:hover {
+            transform: scale(1.02) translateY(-6px);
+            border-color: #ff6fa8;
+            box-shadow: 0 12px 35px rgba(255, 40, 120, 0.3);
+        }
+
+        .foto-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .foto-card .placeholder-icon {
+            font-size: 3.8rem;
+            color: #ff7aa9;
+            opacity: 0.6;
+        }
+
+        .foto-upload-area {
+            display: flex;
+            justify-content: center;
+            margin: 1.8rem 0 1rem;
+        }
+
+        .upload-label {
+            background: rgba(255, 60, 130, 0.15);
+            border: 2px dashed #ff6fa8;
+            border-radius: 60px;
+            padding: 0.9rem 2.8rem;
+            font-weight: 600;
+            color: #ffb3d1;
+            cursor: pointer;
+            transition: 0.25s;
+            backdrop-filter: blur(4px);
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 1.1rem;
+        }
+
+        .upload-label i {
+            font-size: 1.6rem;
+            color: #ff6fa8;
+        }
+
+        .upload-label:hover {
+            background: rgba(255, 80, 150, 0.3);
+            border-color: #ff4d94;
+            box-shadow: 0 0 30px #ff338860;
+            transform: scale(1.02);
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        /* ===== ABA AMOR ===== */
+        .mensagens-container {
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 10px;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .mensagens-container::-webkit-scrollbar {
+            width: 6px;
+        }
+        .mensagens-container::-webkit-scrollbar-track {
+            background: rgba(255, 80, 150, 0.1);
+            border-radius: 20px;
+        }
+        .mensagens-container::-webkit-scrollbar-thumb {
+            background: #ff4d94;
+            border-radius: 20px;
+        }
+
+        .msg-item {
+            background: rgba(255, 200, 220, 0.08);
+            backdrop-filter: blur(4px);
+            border-left: 4px solid #ff4d94;
+            padding: 1.2rem 1.8rem;
+            border-radius: 30px 12px 30px 12px;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 15px rgba(255, 20, 80, 0.1);
+            transition: 0.2s;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            color: #fce4ec;
+            border: 1px solid rgba(255, 100, 170, 0.15);
+        }
+
+        .msg-item i {
+            color: #ff6fa8;
+            margin-right: 12px;
+        }
+
+        .msg-item small {
+            display: block;
+            margin-top: 8px;
+            color: #ff99bb;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .add-msg-area {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.2rem;
+        }
+
+        .add-msg-area input {
+            flex: 1;
+            min-width: 200px;
+            padding: 1rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid rgba(255, 100, 170, 0.3);
+            background: rgba(255, 200, 220, 0.06);
+            backdrop-filter: blur(4px);
+            color: #fce4ec;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.25s;
+        }
+
+        .add-msg-area input::placeholder {
+            color: #b38292;
+        }
+
+        .add-msg-area input:focus {
+            border-color: #ff4d94;
+            box-shadow: 0 0 25px #ff338870;
+        }
+
+        .add-msg-area button {
+            background: rgba(255, 40, 120, 0.25);
+            border: 1px solid #ff6fa8;
+            padding: 0.9rem 2.2rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #ffb3d1;
+            cursor: pointer;
+            transition: 0.25s;
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .add-msg-area button:hover {
+            background: rgba(255, 60, 130, 0.4);
+            border-color: #ff4d94;
+            box-shadow: 0 0 30px #ff3388;
+            transform: scale(1.03);
+            color: #fff;
+        }
+
+        /* ===== ABA LINHA DO TEMPO (extra) ===== */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+            margin: 2rem 0 1rem;
+        }
+
+        .timeline-item {
+            background: rgba(255, 200, 220, 0.05);
+            backdrop-filter: blur(4px);
+            border-radius: 40px;
+            padding: 1.5rem 2.2rem;
+            border: 1px solid rgba(255, 100, 170, 0.15);
+            box-shadow: 0 6px 20px rgba(255, 20, 80, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            transition: 0.25s;
+        }
+
+        .timeline-item:hover {
+            border-color: #ff6fa8;
+            transform: translateX(10px);
+            box-shadow: 0 0 30px #ff338830;
+        }
+
+        .timeline-item .year {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ff9acb, #ff4d94);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            min-width: 90px;
+        }
+
+        .timeline-item .desc {
+            font-size: 1.1rem;
+            color: #fce4ec;
+        }
+
+        .timeline-item .desc i {
+            color: #ff6fa8;
+            margin-right: 10px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 700px) {
+            .header-casal h1 {
+                font-size: 2.5rem;
+            }
+            .tab-btn {
+                padding: 0.6rem 1.4rem;
+                font-size: 1rem;
+            }
+            .foto-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 1rem;
+            }
+        }
+
+        /* efeito brilho extra */
+        .glow-text {
+            text-shadow: 0 0 10px #ff3388, 0 0 30px #ff1a7a40;
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 2.8rem;
+            opacity: 0.5;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: #b38292;
+        }
+        .footer-note i {
+            color: #ff4d94;
+        }
+    </style>
+</head>
+<body>
+
+<div class="futuristic-container">
+    <!-- Cabeçalho Alexandre & Amanda -->
+    <div class="header-casal">
+        <h1>Alexandre</h1>
+        <span class="heart-icon"><i class="fas fa-heart"></i></span>
+        <h1>Amanda</h1>
+    </div>
+
+    <!-- Abas -->
+    <div class="tabs">
+        <button class="tab-btn active" data-tab="fotos"><i class="fas fa-images"></i> Fotos</button>
+        <button class="tab-btn" data-tab="amor"><i class="fas fa-heart"></i> Amor</button>
+        <button class="tab-btn" data-tab="linha"><i class="fas fa-clock"></i> Linha do Tempo</button>
+    </div>
+
+    <!-- ========== ABA FOTOS ========== -->
+    <div id="fotos" class="tab-content active">
+        <div class="foto-grid" id="fotoGrid">
+            <!-- fotos serão inseridas aqui via JS ou padrão -->
+            <div class="foto-card" data-placeholder>
+                <span class="placeholder-icon"><i class="fas fa-camera-retro"></i></span>
+            </div>
+            <div class="foto-card" data-placeholder>
+                <span class="placeholder-icon"><i class="fas fa-camera-retro"></i></span>
+            </div>
+            <div class="foto-card" data-placeholder>
+                <span class="placeholder-icon"><i class="fas fa-camera-retro"></i></span>
+            </div>
+        </div>
+        <div class="foto-upload-area">
+            <label for="fileInput" class="upload-label">
+                <i class="fas fa-plus-circle"></i> Adicionar foto
+            </label>
+            <input type="file" id="fileInput" accept="image/*" multiple />
+        </div>
+        <p style="text-align:center; opacity:0.5; font-size:0.9rem; margin-top:0.5rem;">
+            <i class="fas fa-upload"></i> Clique para adicionar fotos (JPG, PNG, GIF)
+        </p>
+    </div>
+
+    <!-- ========== ABA AMOR ========== -->
+    <div id="amor" class="tab-content">
+        <div class="mensagens-container" id="mensagensContainer">
+            <!-- mensagens padrão -->
+            <div class="msg-item"><i class="fas fa-heart" style="color:#ff4d94;"></i> Você é a pessoa mais incrível que eu já conheci, Amanda. Te amo! <small>— Alexandre ❤️</small></div>
+            <div class="msg-item"><i class="fas fa-star"></i> Cada dia ao seu lado é um presente. Obrigado por existir! <small>— Alexandre</small></div>
+            <div class="msg-item"><i class="fas fa-infinity"></i> Nosso amor é infinito, assim como as estrelas. <small>— Alexandre & Amanda</small></div>
+            <div class="msg-item"><i class="fas fa-kiss"></i> Seu sorriso ilumina meus dias. Eu te amo, Amanda! <small>— Alexandre</small></div>
+        </div>
+
+        <div class="add-msg-area">
+            <input type="text" id="novaMensagem" placeholder="Escreva uma mensagem fofa..." />
+            <button id="addMsgBtn"><i class="fas fa-plus"></i> Adicionar</button>
+        </div>
+    </div>
+
+    <!-- ========== ABA LINHA DO TEMPO (extra) ========== -->
+    <div id="linha" class="tab-content">
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="year">❤️ 2023</span>
+                <span class="desc"><i class="fas fa-heart"></i> O primeiro encontro — mágico e inesquecível.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="year">✨ 2024</span>
+                <span class="desc"><i class="fas fa-map-pin"></i> Nossa primeira viagem juntos, praia e muitas risadas.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="year">🌹 2025</span>
+                <span class="desc"><i class="fas fa-ring"></i> O pedido de namoro mais lindo sob as estrelas.</span>
+            </div>
+            <div class="timeline-item">
+                <span class="year">💫 2026</span>
+                <span class="desc"><i class="fas fa-plane"></i> Planejando o futuro lado a lado, sempre.</span>
+            </div>
+        </div>
+        <p style="text-align:center; opacity:0.6; margin-top:1.5rem; font-size:0.95rem;">
+            <i class="fas fa-arrow-right" style="color:#ff6fa8;"></i> Cada momento com você é eterno, Amanda.
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <i class="fas fa-heart"></i> feito com muito amor por Alexandre & Amanda <i class="fas fa-heart"></i>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ----- TABS -----
+        const tabs = document.querySelectorAll('.tab-btn');
+        const contents = {
+            fotos: document.getElementById('fotos'),
+            amor: document.getElementById('amor'),
+            linha: document.getElementById('linha')
+        };
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const tabId = this.dataset.tab;
+                // remove active de todos os botoes e conteudos
+                tabs.forEach(b => b.classList.remove('active'));
+                Object.values(contents).forEach(c => c.classList.remove('active'));
+                // ativa o atual
+                this.classList.add('active');
+                if (contents[tabId]) contents[tabId].classList.add('active');
+            });
+        });
+
+        // ----- FOTOS: upload e renderização -----
+        const fileInput = document.getElementById('fileInput');
+        const fotoGrid = document.getElementById('fotoGrid');
+
+        // funcao para criar card de foto
+        function createFotoCard(src) {
+            const card = document.createElement('div');
+            card.className = 'foto-card';
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = 'Foto do casal';
+            card.appendChild(img);
+            return card;
+        }
+
+        // Remove placeholders se houver fotos reais
+        function removePlaceholders() {
+            const placeholders = fotoGrid.querySelectorAll('[data-placeholder]');
+            placeholders.forEach(el => el.remove());
+        }
+
+        // Adiciona fotos ao grid
+        function addFiles(files) {
+            const validTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp', 'image/svg+xml'];
+            let hasValid = false;
+            Array.from(files).forEach(file => {
+                if (validTypes.includes(file.type)) {
+                    hasValid = true;
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const card = createFotoCard(e.target.result);
+                        fotoGrid.appendChild(card);
+                        // remove placeholders se existirem e já tiver pelo menos 1 foto real
+                        const placeholders = fotoGrid.querySelectorAll('[data-placeholder]');
+                        if (placeholders.length > 0) {
+                            placeholders.forEach(el => el.remove());
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+            if (!hasValid) {
+                alert('Por favor, selecione imagens válidas (JPG, PNG, GIF, WebP, SVG).');
+            }
+            fileInput.value = ''; // reset
+        }
+
+        fileInput.addEventListener('change', function(e) {
+            if (this.files.length > 0) {
+                addFiles(this.files);
+            }
+        });
+
+        // Drag & drop básico na área de upload? (opcional, mas legal)
+        const uploadLabel = document.querySelector('.upload-label');
+        uploadLabel.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadLabel.style.borderColor = '#ff4d94';
+            uploadLabel.style.background = 'rgba(255,60,130,0.25)';
+        });
+        uploadLabel.addEventListener('dragleave', () => {
+            uploadLabel.style.borderColor = '#ff6fa8';
+            uploadLabel.style.background = 'rgba(255,60,130,0.15)';
+        });
+        uploadLabel.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadLabel.style.borderColor = '#ff6fa8';
+            uploadLabel.style.background = 'rgba(255,60,130,0.15)';
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                addFiles(files);
+            }
+        });
+
+        // Adicionar fotos iniciais (placeholders permanecem até adicionar reais)
+        // mas já temos 3 placeholders. Se quiser, pode remover e deixar vazio, mas é mais fofo com placeholder.
+
+        // ----- MENSAGENS DE AMOR (adicionar) -----
+        const msgContainer = document.getElementById('mensagensContainer');
+        const novaMsgInput = document.getElementById('novaMensagem');
+        const addBtn = document.getElementById('addMsgBtn');
+
+        function addMensagem(texto) {
+            if (!texto.trim()) return false;
+            const div = document.createElement('div');
+            div.className = 'msg-item';
+            // icone aleatorio fofo
+            const icons = ['fas fa-heart', 'fas fa-star', 'fas fa-infinity', 'fas fa-kiss', 'fas fa-smile', 'fas fa-sparkles'];
+            const randIcon = icons[Math.floor(Math.random() * icons.length)];
+            div.innerHTML = `<i class="${randIcon}" style="color:#ff4d94;"></i> ${texto.trim()} <small>— Alexandre & Amanda ❤️</small>`;
+            msgContainer.appendChild(div);
+            msgContainer.scrollTop = msgContainer.scrollHeight;
+            return true;
+        }
+
+        addBtn.addEventListener('click', function() {
+            const msg = novaMsgInput.value;
+            if (addMensagem(msg)) {
+                novaMsgInput.value = '';
+                // feedback
+                addBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => addBtn.style.transform = '', 150);
+            } else {
+                alert('Escreva uma mensagem fofa!');
+                novaMsgInput.focus();
+            }
+        });
+
+        novaMsgInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                addBtn.click();
+            }
+        });
+
+        // pequeno efeito de boas-vindas
+        console.log('💖 Alexandre & Amanda — amor infinito 💖');
+    })();
+</script>
+
+</body>
+</html>
